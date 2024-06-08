@@ -1,4 +1,4 @@
-package com.mauriciomiranda.projeto_vagas_job.candidato.controller;
+package com.mauriciomiranda.projeto_vagas_job.modules.candidato.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

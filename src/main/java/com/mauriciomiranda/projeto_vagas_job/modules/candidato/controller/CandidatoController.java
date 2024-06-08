@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mauriciomiranda.projeto_vagas_job.modules.candidato.CandidatoEntity;
+
 import jakarta.validation.Valid;
 
 @RestController

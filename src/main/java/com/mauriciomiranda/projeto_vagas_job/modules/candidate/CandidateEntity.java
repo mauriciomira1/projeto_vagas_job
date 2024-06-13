@@ -1,4 +1,4 @@
-package com.mauriciomiranda.projeto_vagas_job.modules.candidato;
+package com.mauriciomiranda.projeto_vagas_job.modules.candidate;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,29 +16,28 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data // para criar automaticamente getters e setters
-@Entity(name = "candidato")
-public class CandidatoEntity {
+@Entity(name = "candidate")
+public class CandidateEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
   @Length(min = 5, max = 70, message = "Digite o seu nome completo")
-  private String nome;
+  private String name;
 
   @NotBlank()
   @Pattern(regexp = "\\S+", message = "O nome de usuário de não deve conter espaços")
-  @Column(name = "nome_de_usuario")
-  private String nomeDeUsuario;
+  private String username;
 
-  private String descricao;
+  private String description;
 
   @Email(message = "O campo e-mail deve conter um e-mail válido")
   private String email;
 
   @Length(min = 8, max = 100, message = "A senha deve ter pelo menos 8 (oito) caracteres")
-  private String senha;
-  private String curriculo;
+  private String password;
+  private String curriculum;
 
   @CreationTimestamp
   private LocalDateTime createdAt;

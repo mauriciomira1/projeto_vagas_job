@@ -1,4 +1,4 @@
-package com.mauriciomiranda.projeto_vagas_job.excecoes;
+package com.mauriciomiranda.projeto_vagas_job.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class lidarComExcecoes {
+public class ExceptionHandlerController {
 
   private MessageSource messageSource;
 
-  public lidarComExcecoes(MessageSource mensagem) {
+  public ExceptionHandlerController(MessageSource mensagem) {
     this.messageSource = mensagem;
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<List<MensagemErroDTO>> ExcecaoLidarComArgumentoInvalido(MethodArgumentNotValidException e) {
-    List<MensagemErroDTO> dto = new ArrayList<>();
+  public ResponseEntity<List<ErrorMessageDTO>> ExcecaoLidarComArgumentoInvalido(MethodArgumentNotValidException e) {
+    List<ErrorMessageDTO> dto = new ArrayList<>();
 
     e.getBindingResult().getFieldErrors().forEach(err -> {
       String mensagem = messageSource.getMessage(err, LocaleContextHolder.getLocale());
-      MensagemErroDTO erro = new MensagemErroDTO(mensagem, err.getField());
+      ErrorMessageDTO erro = new ErrorMessageDTO(mensagem, err.getField());
       dto.add(erro);
     });
 

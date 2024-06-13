@@ -1,11 +1,11 @@
-package com.mauriciomiranda.projeto_vagas_job.excecoes;
+package com.mauriciomiranda.projeto_vagas_job.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MensagemErroDTO {
+public class ErrorMessageDTO {
   private String mensagem;
   private String campo;
 }

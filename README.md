@@ -4,9 +4,9 @@
 
 - Resumo: API de vagas para emprego
 - Possui tratamento de exceções
-- Autenticação (candidato e empresa)
+- Autenticação (candidato e empresa) e token
 - Validação de dados
-- Token
+-
 
 ## Linguagem e dependências:
 
@@ -15,9 +15,13 @@
 - Spring Security
 - Postgres
 - Docker
+- JWT
 
 ## URLs de acesso
 
-- Cadastro de usuário: {urlhost}/candidato/
+- Cadastro de candidato: {urlhost}/candidato/
 - Cadastro de empresa: {urlhost}/company/
 - Criação de novo emprego: {urlhost}/company/job/
+
+- Login de candidato: {urlhost}/auth/candidate
+- Login de empresa: {urlhost}/auth/company

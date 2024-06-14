@@ -29,7 +29,7 @@ public class CompanyEntity {
   @Length(min = 5, max = 50, message = "O campo [email] deve ter pelo menos 5 (cinco) caracteres")
   private String email;
 
-  @Length(min = 6, max = 50, message = "O campo [password] deve ter pelo menos 6 (seis) caracteres")
+  @Length(min = 6, max = 100, message = "O campo [password] deve ter pelo menos 6 (seis) caracteres")
   private String password;
 
   private String website;

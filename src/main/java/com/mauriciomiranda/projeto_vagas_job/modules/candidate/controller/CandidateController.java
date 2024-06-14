@@ -1,14 +1,14 @@
 package com.mauriciomiranda.projeto_vagas_job.modules.candidate.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mauriciomiranda.projeto_vagas_job.exceptions.UserFoundException;
 import com.mauriciomiranda.projeto_vagas_job.modules.candidate.CandidateEntity;
-import com.mauriciomiranda.projeto_vagas_job.modules.candidate.CandidateRepository;
+import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.CreateCandidateUseCase;
 
 import jakarta.validation.Valid;
 
@@ -17,16 +17,17 @@ import jakarta.validation.Valid;
 public class CandidateController {
 
   @Autowired
-  private CandidateRepository candidateRepository;
+  private CreateCandidateUseCase createCandidateUseCase;
 
   @PostMapping("/")
   // @Valid usado para validar campos (conforme parâmetros da entidade)
-  public CandidateEntity create(@Valid @RequestBody CandidateEntity candidateEntity) {
-    CandidateEntity candidateExists = this.candidateRepository.findByUsernameOrEmail(candidateEntity.getEmail(),
-        candidateEntity.getUsername());
-    if (candidateExists != null) {
-      throw new UserFoundException("Usuário já cadastrado.");
+  public ResponseEntity<Object> create(@Valid @RequestBody CandidateEntity candidateEntity) {
+    try {
+      var result = this.createCandidateUseCase.execute(candidateEntity);
+      return ResponseEntity.ok().body(result);
+
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
     }
-    return this.candidateRepository.save(candidateEntity);
   }
 }

@@ -2,18 +2,22 @@
 
 ## Detalhes iniciais
 
-- Resumo: Criação de empresas que disponibilizam vagas e candidatos que deverão se cadastrar no sistema, realizar login e se candidatar às vagas disponíveis
+- Resumo: API de vagas para emprego
 - Possui tratamento de exceções
-- Autenticação
+- Autenticação (candidato e empresa)
 - Validação de dados
+- Token
 
 ## Linguagem e dependências:
 
 - Java, com SpringBoot e Maven
 - Spring Data JPA
+- Spring Security
 - Postgres
 - Docker
 
 ## URLs de acesso
 
 - Cadastro de usuário: {urlhost}/candidato/
+- Cadastro de empresa: {urlhost}/company/
+- Criação de novo emprego: {urlhost}/company/job/

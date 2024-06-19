@@ -15,6 +15,9 @@ public class SecurityConfig {
   @Autowired
   SecurityFilter securityFilter;
 
+  @Autowired
+  SecurityCandidateFilter securityCandidateFilter;
+
   // Para sobrescrever configuração padrão do spring security
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -26,7 +29,8 @@ public class SecurityConfig {
               .requestMatchers("/auth/candidate").permitAll();
           auth.anyRequest().authenticated();
         })
-        .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+        .addFilterBefore(securityFilter, BasicAuthenticationFilter.class)
+        .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class);
     return http.build();
   }
 

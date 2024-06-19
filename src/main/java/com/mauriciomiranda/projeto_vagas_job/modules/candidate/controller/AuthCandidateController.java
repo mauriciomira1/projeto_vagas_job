@@ -13,7 +13,7 @@ import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.AuthCand
 import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.ProfileCandidateUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/candidate")
 public class AuthCandidateController {
 
   @Autowired
@@ -22,7 +22,7 @@ public class AuthCandidateController {
   @Autowired
   ProfileCandidateUseCase profileCandidateUseCase;
 
-  @PostMapping("/candidate")
+  @PostMapping("/auth")
   public ResponseEntity<Object> auth(@RequestBody AuthCandidateRequestDTO authCandidateRequestDTO) {
     try {
       var token = this.authCandidateUseCase.execute(authCandidateRequestDTO);

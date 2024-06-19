@@ -12,13 +12,13 @@ import com.mauriciomiranda.projeto_vagas_job.modules.company.dto.AuthCompanyDTO;
 import com.mauriciomiranda.projeto_vagas_job.modules.company.useCases.AuthCompanyUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/company")
 public class AuthCompanyController {
 
   @Autowired
   AuthCompanyUseCase authCompanyUseCase;
 
-  @PostMapping("/company")
+  @PostMapping("/auth")
   public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO) {
     try {
       var token = this.authCompanyUseCase.execute(authCompanyDTO);

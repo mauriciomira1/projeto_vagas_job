@@ -12,6 +12,9 @@ import com.mauriciomiranda.projeto_vagas_job.modules.candidate.dto.AuthCandidate
 import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.AuthCandidateUseCase;
 import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.ProfileCandidateUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/candidate")
 public class AuthCandidateController {
@@ -23,6 +26,9 @@ public class AuthCandidateController {
   ProfileCandidateUseCase profileCandidateUseCase;
 
   @PostMapping("/auth")
+  @Tag(name = "Candidato")
+  @Operation(summary = "Fazer login como candidato", description = "Login do candidato")
+
   public ResponseEntity<Object> auth(@RequestBody AuthCandidateRequestDTO authCandidateRequestDTO) {
     try {
       var token = this.authCandidateUseCase.execute(authCandidateRequestDTO);

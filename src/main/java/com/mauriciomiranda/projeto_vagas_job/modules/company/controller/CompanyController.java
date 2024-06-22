@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mauriciomiranda.projeto_vagas_job.modules.company.entities.CompanyEntity;
 import com.mauriciomiranda.projeto_vagas_job.modules.company.useCases.CreateCompanyUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,8 @@ public class CompanyController {
 
   // Cadastro de empresa
   @PostMapping("/")
+  @Tag(name = "Empresa", description = "Ações relacionadas à empresa")
+  @Operation(summary = "Cadastro de nova empresa", description = "Cadastro de empresa")
   public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
 
     try {

@@ -20,12 +20,15 @@
 
 ## URLs de acesso
 
-- Cadastro de candidato: {urlhost}/candidato/
-- Cadastro de empresa: {urlhost}/company/
-- Criação de novo emprego: {urlhost}/company/job/ (validação de token)
+- POST Cadastro de candidato: {urlhost}/candidato/
+- POST Cadastro de empresa: {urlhost}/company/
+- POST Criação de novo emprego: {urlhost}/company/job/ _(Requer autenticação como empresa)_
 
-- Login de candidato: {urlhost}/auth/candidate
-- Login de empresa: {urlhost}/auth/company
+- POST Login de candidato: {urlhost}/auth/candidate
+- POST Login de empresa: {urlhost}/auth/company
+
+- GET Perfil do candidato: {urlhost}/candidate/ _(Requer autenticação como candidato)_
+- get Listagem de vagas disponíveis: {urlhost}/candidate/job _(Requer autenticação como candidato)_
 
 ## Rotas via Swagger
 

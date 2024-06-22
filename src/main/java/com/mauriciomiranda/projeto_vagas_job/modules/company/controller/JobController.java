@@ -13,6 +13,8 @@ import com.mauriciomiranda.projeto_vagas_job.modules.company.dto.CreateJobDTO;
 import com.mauriciomiranda.projeto_vagas_job.modules.company.entities.JobEntity;
 import com.mauriciomiranda.projeto_vagas_job.modules.company.useCases.CreateJobUseCase;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -26,6 +28,8 @@ public class JobController {
   // Criação de nova vaga de emprego
   @PostMapping("/")
   @PreAuthorize("hasRole('COMPANY')")
+  @Tag(name = "Empresa", description = "Ações relacionadas à empresa")
+  @Operation(summary = "Criar vaga de emprego", description = "Criar nova vaga de emprego")
   // HttpServletRequest é usado para capturar o 'request' do SecurityFilter
   public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest request) {
     var companyId = request.getAttribute("company_id");

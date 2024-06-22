@@ -54,9 +54,10 @@ public class AuthCompanyUseCase {
         .withClaim("roles", Arrays.asList("COMPANY"))
         .sign(algorithm);
 
-    var authCompanyResponseDTO = AuthCompanyResponseDTO.builder().access_token(token)
-        .expires_in(expiresIn.toEpochMilli()).build();
-
+    var authCompanyResponseDTO = AuthCompanyResponseDTO.builder()
+        .access_token(token)
+        .expires_in(expiresIn.toEpochMilli())
+        .build();
     return authCompanyResponseDTO;
   }
 

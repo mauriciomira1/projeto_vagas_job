@@ -3,6 +3,7 @@ package com.mauriciomiranda.projeto_vagas_job.modules.company.controller;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,8 @@ public class JobController {
   private CreateJobUseCase createJobUseCase;
 
   @PostMapping("/")
-  // HttpServletRequest será usado para capturar o 'request' do SecurityFilter
+  // @PreAuthorize("hasRole('COMPANY')")
+  // HttpServletRequest é usado para capturar o 'request' do SecurityFilter
   public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest request) {
     var companyId = request.getAttribute("company_id");
 
@@ -36,13 +38,5 @@ public class JobController {
 
     return this.createJobUseCase.create(jobEntity);
 
-    /*
-     * try {
-     * var result = this.createJobUseCase.create(createJobDTO);
-     * return ResponseEntity.ok().body(result);
-     * } catch (Exception e) {
-     * return ResponseEntity.badRequest().body(e.getMessage());
-     * }
-     */
   }
 }

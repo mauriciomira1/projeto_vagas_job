@@ -58,6 +58,7 @@ public class AuthCompanyUseCase {
         .access_token(token)
         .expires_in(expiresIn.toEpochMilli())
         .build();
+
     return authCompanyResponseDTO;
   }
 

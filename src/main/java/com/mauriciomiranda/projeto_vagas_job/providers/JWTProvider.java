@@ -18,6 +18,8 @@ public class JWTProvider {
     token = token.replace("Bearer ", "");
 
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
+    System.out.println("-------------------------------- TOKEN ---------------------------------");
+    System.out.println(token);
 
     try {
       var tokenDecoded = JWT.require(algorithm)

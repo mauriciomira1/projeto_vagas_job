@@ -23,8 +23,9 @@ public class JobController {
   @Autowired
   private CreateJobUseCase createJobUseCase;
 
+  // Criação de nova vaga de emprego
   @PostMapping("/")
-  // @PreAuthorize("hasRole('COMPANY')")
+  @PreAuthorize("hasRole('COMPANY')")
   // HttpServletRequest é usado para capturar o 'request' do SecurityFilter
   public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest request) {
     var companyId = request.getAttribute("company_id");

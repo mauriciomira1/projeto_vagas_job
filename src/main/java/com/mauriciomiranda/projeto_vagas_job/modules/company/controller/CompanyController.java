@@ -20,6 +20,7 @@ public class CompanyController {
   @Autowired
   private CreateCompanyUseCase createCompanyUseCase;
 
+  // Cadastro de empresa
   @PostMapping("/")
   public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
 

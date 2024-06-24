@@ -28,8 +28,8 @@
 - POST Login de empresa: {urlhost}/auth/company
 
 - GET Perfil do candidato: {urlhost}/candidate/ _(Requer autenticação como candidato)_
-- get Listagem de vagas disponíveis: {urlhost}/candidate/job _(Requer autenticação como candidato)_
+- GET Listagem de vagas disponíveis: {urlhost}/candidate/job _(Requer autenticação como candidato)_
 
-## Rotas via Swagger
+## Rota via Swagger
 
 - Endereço: {urlhost}/swagger-ui/index.html

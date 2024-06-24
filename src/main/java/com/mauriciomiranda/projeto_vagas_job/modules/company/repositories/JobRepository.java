@@ -12,5 +12,5 @@ public interface JobRepository extends JpaRepository<JobEntity, UUID> {
   // Busca de vagas por palavras-chave
 
   // Select * from job where description like %filter%
-  List<JobEntity> findByDescriptionContaining(String filter);
+  List<JobEntity> findByDescriptionContainingIgnoreCase(String filter);
 }

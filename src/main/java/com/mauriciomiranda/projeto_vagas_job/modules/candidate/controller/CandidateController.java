@@ -21,12 +21,14 @@ import com.mauriciomiranda.projeto_vagas_job.modules.candidate.useCases.ProfileC
 import com.mauriciomiranda.projeto_vagas_job.modules.company.entities.JobEntity;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/candidate")
+@Tag(name = "Candidato", description = "Ações relacionadas ao candidato")
 public class CandidateController {
 
   @Autowired
@@ -39,9 +41,8 @@ public class CandidateController {
   private ListAllJobsByFilterUseCase listAllJobsByFilterUseCase;
 
   @PostMapping("/")
-  // @Valid usado para validar campos (conforme parâmetros da entidade)
-  @Tag(name = "Candidato", description = "Ações relacionadas ao candidato")
   @Operation(summary = "Cadastro de novo candidato", description = "Cadastro de candidato")
+  // @Valid usado para validar campos (conforme parâmetros da entidade)
   public ResponseEntity<Object> create(@Valid @RequestBody CandidateEntity candidateEntity) {
     try {
       var result = this.createCandidateUseCase.execute(candidateEntity);
@@ -54,8 +55,8 @@ public class CandidateController {
 
   @GetMapping("/")
   @PreAuthorize("hasRole('CANDIDATE')")
-  @Tag(name = "Candidato", description = "Ações relacionadas ao candidato")
   @Operation(summary = "Perfil do candidato", description = "Perfil do candidato")
+  @SecurityRequirement(name = "jwt_auth")
   public ResponseEntity<Object> get(HttpServletRequest request) {
 
     var idCandidate = request.getAttribute("candidate_id");
@@ -73,8 +74,8 @@ public class CandidateController {
   @GetMapping("/job")
   @PreAuthorize("hasRole('CANDIDATE')")
   // Configurações do Swagger
-  @Tag(name = "Candidato", description = "Ações relacionadas ao candidato")
-  @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Lista de vagas")
+  @Operation(summary = "Listagem de vagas disponíveis para o candidato", description = "Essa função é responsável por listar todas as vagas disponíveis, baseada no filtro")
+  @SecurityRequirement(name = "jwt_auth")
   public List<JobEntity> findJobByFilter(@RequestParam String filter) {
     return this.listAllJobsByFilterUseCase.execute(filter);
   }

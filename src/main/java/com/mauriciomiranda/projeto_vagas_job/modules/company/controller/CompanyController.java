@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/company")
+@Tag(name = "Empresa", description = "Ações relacionadas à empresa")
 public class CompanyController {
 
   @Autowired
@@ -24,7 +25,6 @@ public class CompanyController {
 
   // Cadastro de empresa
   @PostMapping("/")
-  @Tag(name = "Empresa", description = "Ações relacionadas à empresa")
   @Operation(summary = "Cadastro de nova empresa", description = "Cadastro de empresa")
   public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
 
